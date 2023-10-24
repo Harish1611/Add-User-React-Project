@@ -22,7 +22,7 @@ function App() {
     });
   };
   return (
-    <div className="">
+    <div className="justify-center ">
       <AddUser onAddUser={addUserHandler} />
       <AddUserCard userData={usersList} />
     </div>
