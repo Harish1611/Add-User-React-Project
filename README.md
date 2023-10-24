@@ -1,6 +1,18 @@
 # Add User React Project
 
-Add User Reacct Project is a simple ReactJS Application developed to understand and implement React Popups and Validations.
+Add User Project is a simple ReactJS Application developed to understand and implement React Popups and Validations.
+
+# App UI
+
+![UI](image.png)
+
+- Validation & Error Popup for Empty Submission
+
+![Invalid Input PopUp](image-1.png)
+
+-Validation & Error Popup for Invalid Age Submission
+
+![Invalid Age Popup](image-2.png)
 
 ## Tools & Technologies
 
