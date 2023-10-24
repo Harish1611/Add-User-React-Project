@@ -2,7 +2,7 @@ import React from "react";
 
 const ErrorPopupModel = (props) => {
   return (
-    <div onClick={props.onConfrim}>
+    <div onClick={props.onConfrim} className="">
       <div>
         <header>
           <h2>{props.title}</h2>
