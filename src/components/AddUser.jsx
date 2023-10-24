@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ErrorPopupModel from "./ErrorPopupModel";
+import Wrapper from "./Helpers/Wrapper";
 
 const AddUser = (props) => {
   const [userName, setUserName] = useState("");
@@ -45,7 +46,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       <div className=" ">
         {error && (
           <ErrorPopupModel
@@ -99,7 +100,7 @@ const AddUser = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 };
 
