@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ErrorPopupModel from "./ErrorPopupModel";
 import Wrapper from "./Helpers/Wrapper";
 
 const AddUser = (props) => {
-  const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState("");
+  const userNameRef = useRef();
+  const userAgeRef = useRef();
+
   const [error, setError] = useState();
 
   const userSubmissionHandler = (e) => {
     e.preventDefault();
 
-    if (userName.trim().length === 0 || userAge.trim().length === 0) {
+    const enteredUserName = userNameRef.current.value;
+    const enteredUserAge = userAgeRef.current.value;
+
+    if (
+      enteredUserName.trim().length === 0 ||
+      enteredUserAge.trim().length === 0
+    ) {
       setError({
         title: "Invalid Input",
         message: "Please enter Valid Input( no empty values )",
@@ -18,7 +25,7 @@ const AddUser = (props) => {
       return;
     }
 
-    if (userAge.trim() <= 0) {
+    if (enteredUserAge.trim() <= 0) {
       setError({
         title: "Invalid Age",
         message: "Please Enter Age > 0",
@@ -26,19 +33,7 @@ const AddUser = (props) => {
       return;
     }
 
-    console.log(`Entered Data : ${userName}, ${userAge}`);
-    props.onAddUser(userName, userAge);
-
-    setUserName("");
-    setUserAge("");
-  };
-
-  const userNameHandler = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const userAgeHandler = (e) => {
-    setUserAge(e.target.value);
+    props.onAddUser(enteredUserName, enteredUserAge);
   };
 
   const errorHandler = () => {
@@ -68,8 +63,7 @@ const AddUser = (props) => {
                 <input
                   type="text"
                   name="userName"
-                  value={userName}
-                  onChange={userNameHandler}
+                  ref={userNameRef}
                   className="block flex-1  border-0 bg-transparent py-1.5 pl-1 text-gray-800 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -84,8 +78,7 @@ const AddUser = (props) => {
                 <input
                   type="number"
                   name="userAge"
-                  value={userAge}
-                  onChange={userAgeHandler}
+                  ref={userAgeRef}
                   className="block flex-1  border-0 bg-transparent py-1.5 pl-1 text-gray-800 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
