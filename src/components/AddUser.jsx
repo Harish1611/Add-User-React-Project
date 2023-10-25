@@ -4,6 +4,7 @@ import Wrapper from "./Helpers/Wrapper";
 
 const AddUser = (props) => {
   const userNameRef = useRef();
+  const userCollegeRef = useRef();
   const userAgeRef = useRef();
 
   const [error, setError] = useState();
@@ -13,10 +14,12 @@ const AddUser = (props) => {
 
     const enteredUserName = userNameRef.current.value;
     const enteredUserAge = userAgeRef.current.value;
+    const enteredUserCollege = userCollegeRef.current.value;
 
     if (
       enteredUserName.trim().length === 0 ||
-      enteredUserAge.trim().length === 0
+      enteredUserAge.trim().length === 0 ||
+      enteredUserCollege.trim().length === 0
     ) {
       setError({
         title: "Invalid Input",
@@ -33,9 +36,10 @@ const AddUser = (props) => {
       return;
     }
 
-    props.onAddUser(enteredUserName, enteredUserAge);
+    props.onAddUser(enteredUserName, enteredUserCollege, enteredUserAge);
 
     userNameRef.current.value = "";
+    userCollegeRef.current.value = "";
     userAgeRef.current.value = "";
   };
 
@@ -60,13 +64,28 @@ const AddUser = (props) => {
                 htmlFor="username"
                 className="block mt-2 w-full text-md font-bold leading-6 text-black"
               >
-                User Name
+                Username
               </label>
               <div className="flex rounded-md w-full  bg-white   shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <input
                   type="text"
                   name="userName"
                   ref={userNameRef}
+                  className="block flex-1  border-0 bg-transparent py-1.5 pl-1 text-gray-800 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                />
+              </div>
+
+              <label
+                htmlFor="college"
+                className="block mt-2 w-full text-md font-bold leading-6 text-black"
+              >
+                College
+              </label>
+              <div className="flex rounded-md w-full  bg-white   shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                <input
+                  type="text"
+                  name="userName"
+                  ref={userCollegeRef}
                   className="block flex-1  border-0 bg-transparent py-1.5 pl-1 text-gray-800 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
