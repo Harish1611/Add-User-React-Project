@@ -7,18 +7,23 @@ function App() {
   const defaultUsers = [
     {
       name: "Harish",
+      college: "PVPSIT",
       age: 23,
     },
     {
       name: "Naidu",
+      college: "Siddhartha Eng",
       age: 32,
     },
   ];
   const [usersList, setUsersList] = useState(defaultUsers);
 
-  const addUserHandler = (userName, userAge) => {
+  const addUserHandler = (userName, userCollege, userAge) => {
     setUsersList((prevUsers) => {
-      return [...prevUsers, { name: userName, age: userAge }];
+      return [
+        ...prevUsers,
+        { name: userName, college: userCollege, age: userAge },
+      ];
     });
   };
   return (
