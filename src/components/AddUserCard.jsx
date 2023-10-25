@@ -12,7 +12,7 @@ const AddUserCard = (props) => {
               className="text-lg text-white font-semibold"
             >
               {" "}
-              {` ${item.name} ( ${item.age} Years Old)`}{" "}
+              {` ${item.name} ( ${item.age} Years Old), ${item.college}`}
             </p>
           ))}
         </div>
